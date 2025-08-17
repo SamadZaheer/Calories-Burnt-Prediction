@@ -1,81 +1,89 @@
-🏋️ Calories Burnt Prediction
-This project predicts the calories burnt during exercise based on user activity data. Using machine learning techniques, it leverages exercise and physiological features to build a predictive model that can estimate calories burnt for different workouts.
+# 🏋️ Calories Burnt Prediction
 
-📌 Project Overview
-Goal: To create a regression model that predicts calories burnt from exercise and body-related data.
+This project predicts the **calories burnt during exercise** based on user activity data. Using machine learning techniques, it leverages exercise and physiological features to build a predictive model that can estimate calories burnt during workouts.  
 
-Dataset:
+---
 
-exercise.csv → contains exercise details (e.g., duration, heart rate, activity type).
+## 📌 Project Workflow
 
-calories.csv → contains actual calories burnt values.
+The following workflow outlines the key steps in the project:  
 
-![Project Workflow](images/workflow.png)
+<p align="center">
+  <img src="images/workflow.png" alt="Project Workflow" width="700"/>
+</p>
 
-Approach:
+---
 
-Data preprocessing and merging datasets.
+## 📂 Files in the Repository  
 
-Exploratory Data Analysis (EDA) with visualization.
+- **`Calories Burnt Prediction.ipynb`** → Jupyter Notebook with complete data analysis, model training, and evaluation.  
+- **`calories.csv`** → Dataset with calorie information.  
+- **`exercise.csv`** → Dataset with exercise details.  
+- **`README.md`** → Project documentation.  
+- **`images/`** → Diagrams and charts used in the documentation.  
 
-Feature engineering.
+---
 
-Training regression models (e.g., Linear Regression, Random Forest, XGBoost).
+## 🚀 Tech Stack  
 
-Model evaluation using standard metrics (R², MAE, RMSE).
+- **Language**: Python  
+- **Libraries Used**:  
+  - `numpy`, `pandas` → Data manipulation  
+  - `matplotlib`, `seaborn` → Visualization  
+  - `scikit-learn` → Machine learning models & evaluation  
+  - `xgboost` → Advanced gradient boosting  
 
-📂 Files in the Repository
-Calories Burnt Prediction.ipynb → Jupyter Notebook with complete data analysis, model training, and evaluation.
+---
 
-calories.csv → Dataset with calorie information.
+## 🔎 Exploratory Data Analysis  
 
-exercise.csv → Dataset with exercise details.
+The project combines **exercise** and **calories** datasets:  
 
-README.md → Project documentation.
+<p align="center">
+  <img src="images/dataset_merge.png" alt="Dataset Merge" width="600"/>
+</p>
 
-🚀 Tech Stack
-Language: Python
+EDA included:  
+- Checking for missing values and duplicates.  
+- Correlation analysis between features and calories burnt.  
+- Visualizing calorie distribution across activities and demographics.  
 
-Libraries Used:
+---
 
-numpy, pandas → Data manipulation
+## 🤖 Model Training & Evaluation  
 
-matplotlib, seaborn → Visualization
+- Models trained:  
+  - Linear Regression  
+  - Random Forest Regressor  
+  - XGBoost Regressor  
+  - Lasso Regression  
+  - Ridge Regression  
 
-scikit-learn → Machine learning models & evaluation
+- Metrics used for evaluation:  
+  - **Mean Absolute Error (MAE)**  
+  - **Mean Squared Error (MSE)**  
+  - **R² Score**  
 
-xgboost → Advanced gradient boosting
+---
 
-🔎 Exploratory Data Analysis
-Checked for missing values and duplicates.
+## 📊 Results  
 
-Correlation analysis between features and calories burnt.
+<p align="center">
+  <img src="images/model_comparison.png" alt="Model Comparison" width="800"/>
+</p>
 
-Visualized distribution of calories burnt across activities and demographics.
+| Model              | Train MAE | Train MSE | Train R² | Test MAE | Test MSE | Test R² |
+|--------------------|-----------|-----------|----------|----------|----------|---------|
+| Linear Regression  | 17.92     | 508.01    | 0.870    | 17.99    | 502.50   | 0.870   |
+| XGBoost            | 7.75      | 117.12    | 0.970    | 10.33    | 205.67   | 0.947   |
+| Lasso              | 17.94     | 511.08    | 0.869    | 18.01    | 505.08   | 0.869   |
+| Random Forest      | 3.95      | 31.44     | 0.992    | 10.67    | 222.80   | 0.942   |
+| Ridge              | 17.92     | 508.01    | 0.870    | 17.99    | 502.50   | 0.870   |
 
-🤖 Model Training & Evaluation
-Tested multiple regression models:
+---
 
-Linear Regression
+## ✅ Future Improvements  
 
-Random Forest Regressor
-
-XGBoost Regressor
-
-Compared models using:
-
-Mean Absolute Error (MAE)
-
-Root Mean Squared Error (RMSE)
-
-R² Score
-
-👉 Best performance was achieved using XGBoost, providing higher accuracy for calorie prediction.
-
-✅ Future Improvements
-Add deep learning models (e.g., Neural Networks).
-
-Deploy model with Flask/Django as a web app.
-
-Build a real-time calorie prediction dashboard.
-
+- Add deep learning models (e.g., Neural Networks).  
+- Deploy the model with **Flask** or **Django** as a web app.  
+- Build a **real-time calorie prediction dashboard** for end users.  
