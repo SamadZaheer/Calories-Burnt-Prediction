@@ -10,6 +10,8 @@ exercise.csv → contains exercise details (e.g., duration, heart rate, activity
 
 calories.csv → contains actual calories burnt values.
 
+![Project Workflow](images/workflow.png)
+
 Approach:
 
 Data preprocessing and merging datasets.
