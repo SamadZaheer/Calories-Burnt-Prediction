@@ -1,10 +1,10 @@
-# 🏋️ Calories Burnt Prediction
+# Calories Burnt Prediction
 
 This project predicts the **calories burnt during exercise** based on user activity data. Using machine learning techniques, it leverages exercise and physiological features to build a predictive model that can estimate calories burnt during workouts.  
 
 ---
 
-## 📌 Project Workflow
+## Project Workflow
 
 The following workflow outlines the key steps in the project:  
 
@@ -14,7 +14,7 @@ The following workflow outlines the key steps in the project:
 
 ---
 
-## 📂 Files in the Repository  
+## Files in the Repository  
 
 - **`Calories Burnt Prediction.ipynb`** → Jupyter Notebook with complete data analysis, model training, and evaluation.  
 - **`calories.csv`** → Dataset with calorie information.  
@@ -24,7 +24,7 @@ The following workflow outlines the key steps in the project:
 
 ---
 
-## 🚀 Tech Stack  
+## Tech Stack  
 
 - **Language**: Python  
 - **Libraries Used**:  
@@ -35,7 +35,7 @@ The following workflow outlines the key steps in the project:
 
 ---
 
-## 🔎 Exploratory Data Analysis  
+## Exploratory Data Analysis  
 
 The project combines **exercise** and **calories** datasets:  
 
@@ -50,7 +50,7 @@ EDA included:
 
 ---
 
-## 🤖 Model Training & Evaluation  
+## Model Training & Evaluation  
 
 - Models trained:  
   - Linear Regression  
@@ -66,7 +66,7 @@ EDA included:
 
 ---
 
-## 📊 Results  
+## Results  
 
 <p align="center">
   <img src="images/model_comparison.png" alt="Model Comparison" width="800"/>
@@ -82,7 +82,7 @@ EDA included:
 
 ---
 
-## ✅ Future Improvements  
+## Future Improvements  
 
 - Add deep learning models (e.g., Neural Networks).  
 - Deploy the model with **Flask** or **Django** as a web app.  
