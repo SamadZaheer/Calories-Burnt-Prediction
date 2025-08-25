@@ -82,6 +82,31 @@ EDA included:
 
 ---
 
+## Interpretation & Key Findings
+
+### What the errors mean
+- **MAE (Mean Absolute Error)** ≈ average absolute mistake in predicted calories.  
+  - Example: MAE ≈ 10 means predictions are off by ~10 calories on average.
+- **MSE / RMSE** penalize bigger mistakes more than MAE.  
+  - If **RMSE** is much larger than **MAE**, you likely have a few large errors (outliers).
+- **R²** = proportion of variance explained (0–1).  
+  - Higher is better. R² = 0.95 means the model explains 95% of outcome variance.
+
+### Model-by-model read
+- **XGBoost (Test R² ≈ 0.947, MAE ≈ 10.33)**  
+  - Best balance of accuracy and stability. Captures non-linear patterns well without overfitting too hard.
+- **Random Forest (Test R² ≈ 0.942, MAE ≈ 10.67)**  
+  - Very competitive. Note the **train R² ≈ 0.992 vs test R² ≈ 0.942**, which hints at **mild overfitting**.
+- **Linear/Ridge/Lasso (Test R² ≈ 0.869–0.870, MAE ≈ 17.99–18.01)**  
+  - Linear baselines. Lower accuracy suggests the target has **non-linear** relationships that trees/boosting capture better.
+
+### Practical takeaway
+- Use **XGBoost** (current best) for predictions.  
+- Keep **Random Forest** as a strong alternative (bagging improves stability), but watch overfitting.  
+- **Linear models** are good for interpretability and as sanity checks, but are less accurate here.
+
+---
+
 ## Future Improvements  
 
 - Add deep learning models (e.g., Neural Networks).  
