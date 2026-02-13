@@ -111,4 +111,15 @@ EDA included:
 
 - Add deep learning models (e.g., Neural Networks).  
 - Deploy the model with **Flask** or **Django** as a web app.  
-- Build a **real-time calorie prediction dashboard** for end users.  
+- Build a **real-time calorie prediction dashboard** for end users.
+
+---
+
+## Author
+
+### Samad Zaheer
+
+Master of Information Technology (Data Science)  
+Queensland University of Technology (QUT)
+
+---
