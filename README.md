@@ -121,5 +121,3 @@ EDA included:
 
 Master of Information Technology (Data Science)  
 Queensland University of Technology (QUT)
-
----
