@@ -9,7 +9,7 @@ This project predicts the **calories burnt during exercise** based on user activ
 The following workflow outlines the key steps in the project:  
 
 <p align="center">
-  <img src="images/workflow.png" alt="Project Workflow" width="700"/>
+  <img src="images/workflow.png" alt="Project Workflow" width="600"/>
 </p>
 
 ---
