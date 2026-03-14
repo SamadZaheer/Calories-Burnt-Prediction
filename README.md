@@ -1,12 +1,71 @@
 # Calories Burnt Prediction
 
-This project predicts the **calories burnt during exercise** based on user activity data. Using machine learning techniques, it leverages exercise and physiological features to build a predictive model that can estimate calories burnt during workouts.  
+Machine learning regression pipeline comparing five algorithms to predict exercise calorie expenditure across 15,000 workout sessions, achieving R² = 0.947 with XGBoost.
 
 ---
 
-## Project Workflow
+## Project Overview
 
-The following workflow outlines the key steps in the project:  
+Fitness trackers estimate calorie burn — but how accurate are they, and which features actually drive the prediction? This project builds and compares five regression models to predict calories burned during exercise based on physiological and activity data. The goal is to find the most accurate and generalisable model, and to surface the overfitting risks that arise when choosing between tree-based approaches.
+
+With XGBoost predicting within ~10 calories on average (R² = 0.947), the model is accurate enough to power real-time feedback loops in wearables applications or personalised health coaching platforms.
+
+---
+
+## Dataset
+
+- **Source:** Combined exercise + calories datasets (Kaggle)
+- **Size:** ~15,000 workout sessions
+- **Files:** `exercise.csv` (activity and physiological features), `calories.csv` (calorie labels)
+
+| Feature | Description |
+|---------|-------------|
+| Age, Gender | Demographic features |
+| Height, Weight | Body composition |
+| Duration | Session length in minutes |
+| Heart_Rate | Average heart rate during session |
+| Body_Temp | Body temperature during exercise |
+| Calories | Target variable — calories burnt |
+
+<p align="center">
+  <img src="images/dataset_merge.png" alt="Dataset Merge" width="600"/>
+</p>
+
+---
+
+## Approach
+
+1. **Data loading & merging** — combined `exercise.csv` and `calories.csv` on session ID
+2. **EDA** — checked for missing values and duplicates; correlation analysis between features and calorie burn; visualised distributions across activities and demographics
+3. **Model training** — trained five regression models:
+   - Linear Regression
+   - Lasso Regression
+   - Ridge Regression
+   - Random Forest Regressor
+   - XGBoost Regressor
+4. **Evaluation** — compared using MAE, MSE, and R² on both train and test sets to detect overfitting
+
+---
+
+## Key Findings
+
+| Model | Train R² | Test R² | Test MAE |
+|-------|----------|---------|----------|
+| Linear Regression | 0.870 | 0.870 | 17.99 |
+| Lasso | 0.869 | 0.869 | 18.01 |
+| Ridge | 0.870 | 0.870 | 17.99 |
+| Random Forest | **0.992** | 0.942 | 10.67 |
+| **XGBoost** | 0.970 | **0.947** | **10.33** |
+
+<p align="center">
+  <img src="images/model_comparison.png" alt="Model Comparison" width="800"/>
+</p>
+
+- **XGBoost is the best overall model** — Test R² = 0.947, MAE ≈ 10.33 calories. Best balance of accuracy and generalisability
+- **Random Forest shows clear overfitting** — train R² = 0.992 vs test R² = 0.942; the gap signals the model has memorised training patterns rather than generalising
+- **Linear models underfit** — R² ≈ 0.87 across Linear, Lasso, and Ridge, indicating non-linear relationships in the features that trees capture and linear models cannot
+- **Session duration and heart rate** are the strongest predictors of calorie expenditure — body composition features are secondary
+- An MAE of ~10 calories is accurate enough for real-time feedback in wearables or health coaching platforms
 
 <p align="center">
   <img src="images/workflow.png" alt="Project Workflow" width="600"/>
@@ -14,110 +73,17 @@ The following workflow outlines the key steps in the project:
 
 ---
 
-## Files in the Repository  
+## How to Run
 
-- **`Calories Burnt Prediction.ipynb`** → Jupyter Notebook with complete data analysis, model training, and evaluation.  
-- **`calories.csv`** → Dataset with calorie information.  
-- **`exercise.csv`** → Dataset with exercise details.  
-- **`README.md`** → Project documentation.  
-- **`images/`** → Diagrams and charts used in the documentation.  
-
----
-
-## Tech Stack  
-
-- **Language**: Python  
-- **Libraries Used**:  
-  - `numpy`, `pandas` → Data manipulation  
-  - `matplotlib`, `seaborn` → Visualization  
-  - `scikit-learn` → Machine learning models & evaluation  
-  - `xgboost` → Advanced gradient boosting  
-
----
-
-## Exploratory Data Analysis  
-
-The project combines **exercise** and **calories** datasets:  
-
-<p align="center">
-  <img src="images/dataset_merge.png" alt="Dataset Merge" width="600"/>
-</p>
-
-EDA included:  
-- Checking for missing values and duplicates.  
-- Correlation analysis between features and calories burnt.  
-- Visualizing calorie distribution across activities and demographics.  
-
----
-
-## Model Training & Evaluation  
-
-- Models trained:  
-  - Linear Regression  
-  - Random Forest Regressor  
-  - XGBoost Regressor  
-  - Lasso Regression  
-  - Ridge Regression  
-
-- Metrics used for evaluation:  
-  - **Mean Absolute Error (MAE)**  
-  - **Mean Squared Error (MSE)**  
-  - **R² Score**  
-
----
-
-## Results  
-
-<p align="center">
-  <img src="images/model_comparison.png" alt="Model Comparison" width="800"/>
-</p>
-
-| Model              | Train MAE | Train MSE | Train R² | Test MAE | Test MSE | Test R² |
-|--------------------|-----------|-----------|----------|----------|----------|---------|
-| Linear Regression  | 17.92     | 508.01    | 0.870    | 17.99    | 502.50   | 0.870   |
-| XGBoost            | 7.75      | 117.12    | 0.970    | 10.33    | 205.67   | 0.947   |
-| Lasso              | 17.94     | 511.08    | 0.869    | 18.01    | 505.08   | 0.869   |
-| Random Forest      | 3.95      | 31.44     | 0.992    | 10.67    | 222.80   | 0.942   |
-| Ridge              | 17.92     | 508.01    | 0.870    | 17.99    | 502.50   | 0.870   |
-
----
-
-## Interpretation & Key Findings
-
-### What the errors mean
-- **MAE (Mean Absolute Error)** ≈ average absolute mistake in predicted calories.  
-  - Example: MAE ≈ 10 means predictions are off by ~10 calories on average.
-- **MSE / RMSE** penalize bigger mistakes more than MAE.  
-  - If **RMSE** is much larger than **MAE**, you likely have a few large errors (outliers).
-- **R²** = proportion of variance explained (0–1).  
-  - Higher is better. R² = 0.95 means the model explains 95% of outcome variance.
-
-### Model-by-model read
-- **XGBoost (Test R² ≈ 0.947, MAE ≈ 10.33)**  
-  - Best balance of accuracy and stability. Captures non-linear patterns well without overfitting too hard.
-- **Random Forest (Test R² ≈ 0.942, MAE ≈ 10.67)**  
-  - Very competitive. Note the **train R² ≈ 0.992 vs test R² ≈ 0.942**, which hints at **mild overfitting**.
-- **Linear/Ridge/Lasso (Test R² ≈ 0.869–0.870, MAE ≈ 17.99–18.01)**  
-  - Linear baselines. Lower accuracy suggests the target has **non-linear** relationships that trees/boosting capture better.
-
-### Practical takeaway
-- Use **XGBoost** (current best) for predictions.  
-- Keep **Random Forest** as a strong alternative (bagging improves stability), but watch overfitting.  
-- **Linear models** are good for interpretability and as sanity checks, but are less accurate here.
-
----
-
-## Future Improvements  
-
-- Add deep learning models (e.g., Neural Networks).  
-- Deploy the model with **Flask** or **Django** as a web app.  
-- Build a **real-time calorie prediction dashboard** for end users.
+```bash
+git clone https://github.com/SamadZaheer/Calories-Burnt-Prediction.git
+cd Calories-Burnt-Prediction
+pip install -r requirements.txt
+jupyter notebook "Calories Burnt Prediction.ipynb"
+```
 
 ---
 
 ## Author
 
-### Samad Zaheer
-
-Master of Information Technology (Data Science)  
-Queensland University of Technology (QUT)
+**Samad Zaheer** — Master of Information Technology (Data Science), Queensland University of Technology (QUT)
