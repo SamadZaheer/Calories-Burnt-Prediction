@@ -45,6 +45,10 @@ With XGBoost predicting within ~10 calories on average (R² = 0.947), the model 
    - XGBoost Regressor
 4. **Evaluation** — compared using MAE, MSE, and R² on both train and test sets to detect overfitting
 
+<p align="center">
+  <img src="images/workflow.png" alt="Project Workflow" width="600"/>
+</p>
+
 ---
 
 ## Key Findings
@@ -66,10 +70,6 @@ With XGBoost predicting within ~10 calories on average (R² = 0.947), the model 
 - **Linear models underfit** — R² ≈ 0.87 across Linear, Lasso, and Ridge, indicating non-linear relationships in the features that trees capture and linear models cannot
 - **Session duration and heart rate** are the strongest predictors of calorie expenditure — body composition features are secondary
 - An MAE of ~10 calories is accurate enough for real-time feedback in wearables or health coaching platforms
-
-<p align="center">
-  <img src="images/workflow.png" alt="Project Workflow" width="600"/>
-</p>
 
 ---
 
