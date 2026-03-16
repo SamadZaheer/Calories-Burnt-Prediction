@@ -1,6 +1,6 @@
 # Calories Burnt Prediction
 
-Machine learning regression pipeline comparing five algorithms to predict exercise calorie expenditure across 15,000 workout sessions, achieving R² = 0.947 with XGBoost.
+Machine learning regression pipeline comparing five algorithms to predict exercise calorie expenditure across 15,000 workout sessions, achieving R² = 0.9990 and MAE = 1.38 kcal with XGBoost.
 
 ---
 
@@ -8,7 +8,15 @@ Machine learning regression pipeline comparing five algorithms to predict exerci
 
 Fitness trackers estimate calorie burn — but how accurate are they, and which features actually drive the prediction? This project builds and compares five regression models to predict calories burned during exercise based on physiological and activity data. The goal is to find the most accurate and generalisable model, and to surface the overfitting risks that arise when choosing between tree-based approaches.
 
-With XGBoost predicting within ~10 calories on average (R² = 0.947), the model is accurate enough to power real-time feedback loops in wearables applications or personalised health coaching platforms.
+With XGBoost predicting within ~1.4 calories on average (R² = 0.9990), the model is accurate enough to power real-time feedback loops in wearables applications or personalised health coaching platforms.
+
+---
+
+## 🚀 Live Demo
+
+Try the deployed app here: **[Calories Burnt Predictor](https://samadzaheer-calories-burnt.streamlit.app)**
+
+Adjust your personal stats and workout parameters — the model predicts your calorie burn in real time.
 
 ---
 
@@ -55,21 +63,21 @@ With XGBoost predicting within ~10 calories on average (R² = 0.947), the model 
 
 | Model | Train R² | Test R² | Test MAE |
 |-------|----------|---------|----------|
-| Linear Regression | 0.870 | 0.870 | 17.99 |
-| Lasso | 0.869 | 0.869 | 18.01 |
-| Ridge | 0.870 | 0.870 | 17.99 |
-| Random Forest | **0.992** | 0.942 | 10.67 |
-| **XGBoost** | 0.970 | **0.947** | **10.33** |
+| Linear Regression | 0.9670 | 0.9688 | 8.20 |
+| Lasso | 0.9611 | 0.9626 | 9.00 |
+| Ridge | 0.9670 | 0.9688 | 8.20 |
+| Random Forest | 0.9997 | 0.9982 | 1.69 |
+| **XGBoost** | **0.9996** | **0.9990** | **1.38** |
 
 <p align="center">
   <img src="images/model_comparison.png" alt="Model Comparison" width="800"/>
 </p>
 
-- **XGBoost is the best overall model** — Test R² = 0.947, MAE ≈ 10.33 calories. Best balance of accuracy and generalisability
-- **Random Forest shows clear overfitting** — train R² = 0.992 vs test R² = 0.942; the gap signals the model has memorised training patterns rather than generalising
-- **Linear models underfit** — R² ≈ 0.87 across Linear, Lasso, and Ridge, indicating non-linear relationships in the features that trees capture and linear models cannot
-- **Session duration and heart rate** are the strongest predictors of calorie expenditure — body composition features are secondary
-- An MAE of ~10 calories is accurate enough for real-time feedback in wearables or health coaching platforms
+- **XGBoost is the best overall model** — Test R² = 0.9990, MAE ≈ 1.38 calories. Predicts calorie burn to within ~1.4 calories on average
+- **Random Forest shows clear overfitting** — train R² = 0.9997 vs test R² = 0.9982; the gap signals the model has memorised training patterns rather than generalising
+- **Linear models underfit** — R² ≈ 0.97 across Linear, Lasso, and Ridge, indicating non-linear relationships in the features that trees capture and linear models cannot
+- **Weight, Duration, and Heart Rate are the strongest predictors** — all 7 physiological and activity features contribute meaningfully to model accuracy
+- An MAE of ~1.38 calories is accurate enough for real-time feedback in wearables or health coaching platforms
 
 ---
 
@@ -81,6 +89,14 @@ cd Calories-Burnt-Prediction
 pip install -r requirements.txt
 jupyter notebook "Calories Burnt Prediction.ipynb"
 ```
+
+---
+
+## Tech Stack
+
+- **Language:** Python
+- **Libraries:** pandas, numpy, matplotlib, seaborn, scikit-learn, xgboost
+- **Deployment:** Streamlit Community Cloud
 
 ---
 
