@@ -12,9 +12,9 @@ With XGBoost predicting within ~1.4 calories on average (R² = 0.9990), the mode
 
 ---
 
-## 🚀 Live Demo
+## Live Demo
 
-Try the deployed app here: **[Calories Burnt Predictor](https://samadzaheer-calories-burnt.streamlit.app)**
+Try the deployed app here: <a href="https://samadzaheer-calories-burnt.streamlit.app" target="_blank">Calories Burnt Predictor</a>
 
 Adjust your personal stats and workout parameters — the model predicts your calorie burn in real time.
 
